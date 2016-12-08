@@ -9,7 +9,7 @@ COPY brunch-config.js /tmp
 RUN cd /tmp \
     && npm install \
     && npm install brunch -g \
-    && brunch build \
+    && npm run prod \
     && mv public/* /usr/share/nginx/html \
     && cd / \
     && rm -r /tmp/*
