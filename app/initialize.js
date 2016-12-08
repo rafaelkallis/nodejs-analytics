@@ -1,4 +1,5 @@
+const Promise = require('bluebird');
+
 document.addEventListener('DOMContentLoaded', () => {
-  // do your setup here
-  console.log('Initialized app');
+  Promise.each(Array.from(document.getElementsByTagName('katex')), element => katex.render(element.innerHTML, element));
 });

@@ -1,17 +1,19 @@
 {
-  "name": "your-app",
-  "description": "Description",
-  "author": "Your Name",
-  "version": "0.0.1",
+  "name": "Node.js Analytics",
+  "description": "Some insights about the Node.js social network",
+  "author": "Rafael Kallis",
+  "version": "1.0",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/rafaelkallis.com/nodejs-analytics"
   },
   "scripts": {
     "start": "brunch watch --server",
     "prod": "brunch build --production"
   },
-  "dependencies": {},
+  "dependencies": {
+    "bluebird": "^3.4.6"
+  },
   "devDependencies": {
     "auto-reload-brunch": "^2.0.0",
     "babel-brunch": "~6.0.0",
