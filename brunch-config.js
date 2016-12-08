@@ -2,14 +2,31 @@ module.exports = {
   files: {
     javascripts: {
       joinTo: {
-        'vendor.js': /^(?!app)/,
-        'app.js': /^app/
+        'js/vendor.js': /^(?!app)/,
+        'js/app.js': /^app/
       }
     },
-    stylesheets: {joinTo: 'app.css'}
+    stylesheets: {
+      joinTo: {
+        'css/vendor.css': /^(?!app)/,
+        'css/app.css': /^app/
+      }
+    }
   },
 
   plugins: {
-    babel: {presets: ['es2015']}
+    babel: { presets: ['es2015'] }
+  },
+
+  npm: {
+    styles: {
+      'normalize.css': ['normalize.css'],
+      milligram: ['dist/milligram.min.css'],
+      katex: ['dist/katex.min.css']
+    },
+    globals: {
+      Katex: 'katex',
+      Promise: 'bluebird'
+    }
   }
 };
