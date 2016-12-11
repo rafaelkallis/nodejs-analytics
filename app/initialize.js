@@ -1,3 +1,3 @@
 document.addEventListener('DOMContentLoaded', () => {
-  Promise.each(Array.from(document.getElementsByTagName('katex')), element => Katex.render(element.innerHTML, element));
+  Promise.each(Array.from(document.getElementsByClassName('katex')), element => Katex.render(element.innerHTML, element));
 });

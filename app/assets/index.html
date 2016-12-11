@@ -16,7 +16,7 @@
 </head>
 
 <body>
-  <div class="container">
+  <div class="container" style="margin-top:50px;">
     <h3>NodeJS Analytics</h3>
     <p>by <a href="http://rafaelkallis.com" target="_blank">Rafael Kallis</a></p>
     <p><a href="https://nodejs.org/en/about/" target="_blank">Node.js</a> is a JavaScript runtime built on Chrome's V8 JavaScript
@@ -29,11 +29,14 @@
       <a href="https://developer.github.com/v3/" target="_blank">GitHub API</a> using my <a href="https://github.com/rafaelkallis/uzh-github-spider"
         target="_blank">homemade github crawler</a>. All content is open source and may be used freely for any purpose.
       <div class="row">
-        <div class="column column-offset-25 column-50 text-center">
-          <div>
-            <img src="./img/overview_graph.svg" style="width: 100%;">
+        <div class="column">
+          <div class="plot">
+            <img src="./img/overview_graph.svg">
+            <div class="plot-description">Abstract overview over the collected data. In the core we have the contributors. Edges are directed and represent
+              a "follows" relationship. In the outer ring, we have users which have a relationship to contributors, but didn't
+              contribute to Node.js
+            </div>
           </div>
-          <em>Abstract overview over the collected data. In the core we have the contributors. Edges are directed and represent a "follows" relationship. In the outer ring, we have users which have a relationship to contributors, but didn't contribute to Node.js</em>
         </div>
       </div>
       <h4>Table of contents</h4>
@@ -58,28 +61,40 @@
         <h5>Contributor Network</h5>
         <p>First some analysis has been conducted on users which have contributed to the project.</p>
         <div class="row">
-          <div class="column column-50 text-center">
-            <img src="./img/commiters_graph.svg" style="width: 100%;">
-            <em>Figure 1: Node.js contributor graph.</em>
+          <div class="column">
+            <div class="plot">
+              <img src="./img/contributor_digraph.svg" style="width: 100%;">
+              <div class="plot-description">
+                Figure 1: Node.js contributor graph. Isolated nodes ommited. Number of commits (log) determines the size of vertices.
+              </div>
+            </div>
           </div>
-          <div class="column column-50" style="margin: auto;">
-            <p>Node.js contributor metrics:</p>
+          <div class="column" style="margin: auto;">
+            <h5>Node.js contributor metrics:</h5>
             <ul class="indent">
               <li>
-                Network Size:
-                <katex>\small 809</katex>
+                Network size:
+                <span class="katex">\scriptsize 1066</span>
               </li>
               <li>
-                Degree Centralization Score:
-                <katex>\small 0.2811872</katex>
+                Indegree centralization score:
+                <span class="katex">\scriptsize 0.1810956</span>
               </li>
               <li>
-                Clustering Coefficient:
-                <katex>\small 0.1674887</katex>
+                Outdegree centralisation score:
+                <span class="katex">\scriptsize 0.426166</span>
               </li>
               <li>
-                Average Path Length:
-                <katex>\small 3.97246</katex>
+                Clustering coefficient:
+                <span class="katex">\scriptsize 0.1674887</span>
+              </li>
+              <li>
+                Average path length:
+                <span class="katex">\scriptsize 3.97246</span>
+              </li>
+              <li>
+                Diameter:
+                <span class="katex">\scriptsize 10</span>
               </li>
             </ul>
           </div>
@@ -88,18 +103,18 @@
         <h5 id="commits">Commits</h5>
         <blockquote>
           <div class="row">
-            <div class="column column-50">
+            <div class="column">
               <ul>
                 <li>Number of commits:
-                  <katex>\small 14415</katex>
+                  <span class="katex">\scriptsize 14415</span>
                 </li>
                 <li>
                   Mean commits:
-                  <katex>\small 17.818</katex>
+                  <span class="katex">\scriptsize 17.818</span>
                 </li>
                 <li>
                   Median commits:
-                  <katex>\small 1</katex>
+                  <span class="katex">\scriptsize 1</span>
                 </li>
               </ul>
               <p>Top 5 contributors by commits:</p>
@@ -109,43 +124,47 @@
                     <td>1.</td>
                     <td><a href="https://github.com/ry" target="_blank">ry</a></td>
                     <td>
-                      <katex>\small 3021</katex>
+                      <span class="katex">\footnotesize 3021</span>
                     </td>
                   </tr>
                   <tr>
                     <td>2.</td>
                     <td><a href="https://github.com/bnoordhuis" target="_blank">bnoordhuis</a></td>
                     <td>
-                      <katex>\small 1911</katex>
+                      <span class="katex">\footnotesize 1911</span>
                     </td>
                   </tr>
                   <tr>
                     <td>3.</td>
                     <td><a href="https://github.com/isaacs" target="_blank">isaacs</a></td>
                     <td>
-                      <katex>\small 1630</katex>
+                      <span class="katex">\footnotesize 1630</span>
                     </td>
                   </tr>
                   <tr>
                     <td>4.</td>
                     <td><a href="https://github.com/indutny" target="_blank">indutny</a></td>
                     <td>
-                      <katex>\small 741</katex>
+                      <span class="katex">\footnotesize 741</span>
                     </td>
                   </tr>
                   <tr>
                     <td>5.</td>
                     <td><a href="https://github.com/piscisaureus" target="_blank">piscisaureus</a></td>
                     <td>
-                      <katex>\small 595</katex>
+                      <span class="katex">\footnotesize 595</span>
                     </td>
                   </tr>
                 </tbody>
               </table>
             </div>
-            <div class="column column-50 text-center">
-              <img src="./img/n_commits_histogram.svg">
-              <em>Figure 2: Number of commits (log) histogram.</em>
+            <div class="column">
+              <div class="plot">
+                <img src="./img/contributor_n_commits_log_histogram.svg">
+                <div class="plot-description">
+                  Figure 2: Number of commits (log) histogram.
+                </div>
+              </div>
             </div>
           </div>
         </blockquote>
@@ -153,19 +172,16 @@
         <h5 id="contributor-indegree">Indegree</h5>
         <blockquote>
           <div class="row">
-            <div class="column column-50">
+            <div class="column">
+              <p>Indegree is defined as the number of contributors following a specific contributor. All values are normalised.</p>
               <ul>
                 <li>
-                  Number of indegrees:
-                  <katex>\small 6538</katex>
-                </li>
-                <li>
                   Mean indegree:
-                  <katex>\small 8.081582</katex>
+                  <span class="katex">\scriptsize 5.758881 \times 10^{-3}</span>
                 </li>
                 <li>
                   Median indegree:
-                  <katex>\small 2</katex>
+                  <span class="katex">\scriptsize 9.389671 \times 10^{-4}</span>
                 </li>
               </ul>
               <p>Top 5 contributors by indegree:</p>
@@ -175,53 +191,73 @@
                     <td>1.</td>
                     <td><a href="https://github.com/tj" target="_blank">tj</a></td>
                     <td>
-                      <katex>\small 199</katex>
+                      <span class="katex">\footnotesize 1.8685446 \times 10^{-1}</span>
                     </td>
                   </tr>
                   <tr>
                     <td>2.</td>
                     <td><a href="https://github.com/isaacs" target="_blank">isaacs</a></td>
                     <td>
-                      <katex>\small 181</katex>
+                      <span class="katex">\footnotesize 1.6995305 \times 10^{-1}</span>
                     </td>
                   </tr>
                   <tr>
                     <td>3.</td>
                     <td><a href="https://github.com/substack" target="_blank">substack</a></td>
                     <td>
-                      <katex>\small 175</katex>
+                      <span class="katex">\footnotesize 1.6431925 \times 10^{-1}</span>
                     </td>
                   </tr>
                   <tr>
                     <td>4.</td>
                     <td><a href="https://github.com/ry" target="_blank">ry</a></td>
                     <td>
-                      <katex>\small 141</katex>
+                      <span class="katex">\footnotesize 1.3239437 \times 10^{-1}</span>
                     </td>
                   </tr>
                   <tr>
                     <td>5.</td>
                     <td><a href="https://github.com/indutny" target="_blank">indutny</a></td>
                     <td>
-                      <katex>\small 117</katex>
+                      <span class="katex">\footnotesize 1.0985915 \times 10^{-1}</span>
                     </td>
                   </tr>
                 </tbody>
               </table>
             </div>
-            <div class="column column-50 text-center">
-              <img src="./img/commiters_indegree_distribution.svg">
-              <em>Figure 3: Contributor indegree distribution</em>
+            <div class="column">
+              <div class="plot">
+                <img src="./img/contributor_indegree_log_histogram.svg">
+                <div class="plot-description">
+                  Figure 3: Contributor indegree (log) histogram.
+                </div>
+              </div>
             </div>
           </div>
-          <div class="row text-center">
-            <div class="column column-50">
-              <img src="./img/indegree_n_commits.svg">
-              <em>Figure 4: Number of commits with respect to indegree.</em>
+          <div class="row">
+            <div class="column">
+              <div class="plot">
+                <img src="./img/contributor_indegree_n_commits.svg">
+                <div class="plot-description">
+                  Figure 4: Number of commits with respect to indegree.
+                </div>
+              </div>
             </div>
-            <div class="column column-50">
-              <img src="./img/indegree_log_n_commits_log.svg">
-              <em>Figure 5: Number of commits (log) with respect to indegree (log).</em>
+            <div class="column">
+              <div class="plot">
+                <img src="./img/contributor_indegree_log_n_commits_log.svg">
+                <div class="plot-description">
+                  Figure 5: Number of commits (log) with respect to indegree (log).
+                  <div class="row">
+                    <div class="column">
+                      <span class="katex">\scriptsize \log n_{commits}=\alpha_{fit} + \beta_{fit} \log deg_{in}(v),</span>
+                    </div>
+                    <div class="column">
+                      <span class="katex">\scriptsize \beta_{fit} = 0.53556, \quad R^2=0.2505</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </blockquote>
@@ -229,16 +265,16 @@
         <h5 id="contributor-outdegree">Outdegree</h5>
         <blockquote>
           <div class="row">
-            <div class="column column-50">
+            <div class="column">
+              <p>Outdegree is defined as the number of contributors a specific contributor follows. All values are normalised.</p>
               <ul>
-                <li>Number of outdegrees:
-                  <katex>\small 6538</katex>
+                <li>
+                  Mean outdegree:
+                  <span class="katex">\scriptsize 5.758881 \times 10^{-3}</span>
                 </li>
-                <li>Mean outdegree:
-                  <katex>\small 8.081582</katex>
-                </li>
-                <li>Median outdegree:
-                  <katex>\small 2</katex>
+                <li>
+                  Median outdegree:
+                  <span class="katex">\scriptsize 9.389671 \times 10^{-4}</span>
                 </li>
               </ul>
               <p>Top 5 contributors by outdegree:</p>
@@ -248,53 +284,69 @@
                     <td>1.</td>
                     <td><a href="https://github.com/cusspvz" target="_blank">cusspvz</a></td>
                     <td>
-                      <katex>\small 460</katex>
+                      <span class="katex">\footnotesize 4.3192488 \times 10^{-1}</span>
                     </td>
                   </tr>
                   <tr>
                     <td>2.</td>
                     <td><a href="https://github.com/Sannis" target="_blank">Sannis</a></td>
                     <td>
-                      <katex>\small 173</katex>
+                      <span class="katex">\footnotesize 1.6244131 \times 10^{-1}</span>
                     </td>
                   </tr>
                   <tr>
                     <td>3.</td>
                     <td><a href="https://github.com/roryrjb" target="_blank">roryrjb</a></td>
                     <td>
-                      <katex>\small 162</katex>
+                      <span class="katex">\footnotesize 1.5211268 \times 10^{-1}</span>
                     </td>
                   </tr>
                   <tr>
                     <td>4.</td>
                     <td><a href="https://github.com/stevemao" target="_blank">stevemao</a></td>
                     <td>
-                      <katex>\small 105</katex>
+                      <span class="katex">\footnotesize 9.859155 \times 10^{-2}</span>
                     </td>
                   </tr>
                   <tr>
                     <td>5.</td>
                     <td><a href="https://github.com/rjrodger" target="_blank">rjrodger</a></td>
                     <td>
-                      <katex>\small 102</katex>
+                      <span class="katex">\footnotesize 9.577465 \times 10^{-2}</span>
                     </td>
                   </tr>
                 </tbody>
               </table>
             </div>
-            <div class="column column-50 text-center">
-              <img src="./img/commiters_out_degree_distribution.svg">
-              <em>Figure 6: Contributor outdegree distribution.</em>
+            <div class="column">
+              <div class="plot">
+                <img src="./img/contributor_outdegree_log_histogram.svg">
+                <div class="plot-description">Figure 6: Contributor outdegree (log) histogram.</div>
+              </div>
             </div>
           </div>
-          <div class="row text-center">
-            <div class="column column-50">
-              <img src="./img/outdegree_n_commits.svg">
-              <em>Figure 7: Number of commits with respect to outdegree.</em>
+          <div class="row">
+            <div class="column">
+              <div class="plot">
+                <img src="./img/contributor_outdegree_n_commits.svg">
+                <div class="plot-description">Figure 7: Number of commits with respect to outdegree.</div>
+              </div>
             </div>
-            <div class="column column-50">
-              <img src="./img/outdegree_log_n_commits_log.svg">
-              <em>Figure 8: Number of commits (log) with respect to outdegree (log).</em>
+            <div class="column">
+              <div class="plot">
+                <img src="./img/contributor_outdegree_log_n_commits_log.svg">
+                <div class="plot-description">
+                  Figure 8: Number of commits (log) with respect to outdegree (log).
+                  <div class="row">
+                    <div class="column">
+                      <span class="katex">\scriptsize n_{commits}=\alpha + \beta \log deg_{out}(v),</span>
+                    </div>
+                    <div class="column">
+                      <span class="katex">\scriptsize \beta_{fit} = 0.17396, \quad R^2=0.02517</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </blockquote>
@@ -302,24 +354,24 @@
         <h5 id="contributor-betweenness">Betweenness</h5>
         <blockquote>
           <div class="row">
-            <div class="column column-50">
+            <div class="column">
               <p>Betweenness centrality quantifies the number of times a node acts as a bridge along the shortest path between
                 two other nodes.</p>
               <div class="text-center" style="margin-bottom: 20px;">
-                <katex>\Large C_B(v)=\huge\sum\limits_{\large s \ne v \ne t \in V} \Large \frac{\sigma_{st}(v)}{\sigma_{st}}</katex>
+                <span class="katex">\Large C_B(v)=\huge\sum\limits_{\large s \ne v \ne t \in V} \Large \frac{\sigma_{st}(v)}{\sigma_{st}}</span>
               </div>
               <p>Where
-                <katex>\sigma_{st}</katex> is the total number of shortest paths from node
-                <katex>s</katex> to node
-                <katex>t</katex> and
-                <katex>\sigma_{st}(v)</katex> is the number of those paths that pass through
-                <katex>v</katex>.</p>
+                <span class="katex">\footnotesize \sigma_{st}</span> is the total number of shortest paths from node
+                <span class="katex">\footnotesize s</span> to node
+                <span class="katex">\footnotesize t</span> and
+                <span class="katex">\footnotesize \sigma_{st}(v)</span> is the number of those paths that pass through
+                <span class="katex">\footnotesize v</span>. All following values are normalised.</p>
               <ul>
                 <li>Mean betweenness:
-                  <katex>1526.272</katex>
+                  <span class="katex">\scriptsize 2.340707 \times 10^{-3}</span>
                 </li>
                 <li>Median betweenness:
-                  <katex>0.5098137</katex>
+                  <span class="katex">\scriptsize 7.818556 \times 10^{-7}</span>
                 </li>
               </ul>
               <p>Top 5 contributors by betweenness:</p>
@@ -329,53 +381,74 @@
                     <td>1.</td>
                     <td><a href="https://github.com/cusspvz" target="_blank">cusspvz</a></td>
                     <td>
-                      <katex>\small 1.398703 \times 10^5</katex>
+                      <span class="katex">\footnotesize 2.1450663 \times 10^{-1}</span>
                     </td>
                   </tr>
                   <tr>
                     <td>2.</td>
                     <td><a href="https://github.com/tj" target="_blank">tj</a></td>
                     <td>
-                      <katex>\small 1.127193 \times 10^5</katex>
+                      <span class="katex">\footnotesize 1.7286757 \times 10^{-1}</span>
                     </td>
                   </tr>
                   <tr>
                     <td>3.</td>
                     <td><a href="https://github.com/fixe" target="_blank">fixe</a></td>
                     <td>
-                      <katex>\small 9.147880 \times 10^4</katex>
+                      <span class="katex">\footnotesize 1.4029286 \times 10^{-1}</span>
                     </td>
                   </tr>
                   <tr>
                     <td>4.</td>
                     <td><a href="https://github.com/substack" target="_blank">substack</a></td>
                     <td>
-                      <katex>\small 5.138506 \times 10^4</katex>
+                      <span class="katex">\footnotesize 7.8804678 \times 10^{-2}</span>
                     </td>
                   </tr>
                   <tr>
                     <td>5.</td>
                     <td><a href="https://github.com/maxogden" target="_blank">maxogden</a></td>
                     <td>
-                      <katex>\small 3.685972 \times 10^4</katex>
+                      <span class="katex">\footnotesize 5.6528457 \times 10^{-2}</span>
                     </td>
                   </tr>
                 </tbody>
               </table>
             </div>
-            <div class="column column-50 text-center">
-              <img src="/img/commiters_betweenness_distribution.svg">
-              <em>Figure 9: Contributor betweenness distribution.</em>
+            <div class="column">
+              <div class="plot">
+                <img src="./img/contributor_betweenness_log_histogram.svg">
+                <div class="plot-description">
+                  Figure 9: Contributor betweenness (log) histogram.
+                </div>
+              </div>
             </div>
           </div>
-          <div class="row text-center">
-            <div class="column column-50">
-              <img src="./img/betweenness_n_commits.svg">
-              <em>Figure 10: Number of commits with respect to betweenness.</em>
+          <div class="row">
+            <div class="column">
+              <div class="plot">
+                <img src="./img/contributor_betweenness_n_commits.svg">
+                <div class="plot-description">
+                  Figure 10: Number of commits with respect to betweenness.
+                </div>
+              </div>
             </div>
-            <div class="column column-50">
-              <img src="./img/betweenness_log_n_commits_log.svg">
-              <em>Figure 11: Number of commits (log) with respect to betweenness (log).</em>
+            <div class="column">
+              <div class="plot">
+                <img src="./img/contributor_betweenness_log_n_commits_log.svg">
+                <div class="plot-description">
+                  Figure 11: Number of commits (log) with respect to betweenness (log).
+                  <div class="row">
+                    <div class="column">
+                      <span class="katex">\scriptsize n_{commits} = \alpha + \beta \log C_{bv},</span>
+                    </div>
+                    <div class="column">
+                      <span class="katex">\scriptsize \beta_{fit} =0.1507, \quad R^2=0.1142</span>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
             </div>
           </div>
         </blockquote>
@@ -383,23 +456,23 @@
         <h5 id="contributor-indegree-closeness">Indegree Closeness</h5>
         <blockquote>
           <div class="row">
-            <div class="column column-50">
+            <div class="column">
               <p>The indegree closeness centrality of a node is a measure of centrality in a network, calculated as the sum
                 of the length of the shortest paths between the node and all other nodes in the directed graph. Thus the
                 more central a node is, the closer it is to all other nodes.</p>
               <div class="text-center" style="margin-bottom: 20px;">
-                <katex>\Large C(x)=\frac{N - 1}{\sum_yd(y,x)}</katex>
+                <span class="katex">\Large C(x)=\frac{N - 1}{\sum_yd(y,\space x)}</span>
               </div>
               <p>Where
-                <katex>d(y,x)</katex> is the distance between vertices
-                <katex>x</katex> and
-                <katex>y</katex>.</p>
+                <span class="katex">\footnotesize d(y,x)</span> is the distance between vertices
+                <span class="katex">\footnotesize x</span> and
+                <span class="katex">\footnotesize y</span>.</p>
               <ul>
                 <li>Mean indegree closeness:
-                  <katex>4.794425 \times 10^{-6}</katex>
+                  <span class="katex">\scriptsize 1.672692 \times 10^{-3}</span>
                 </li>
                 <li>Median indegree closeness:
-                  <katex>5.161663 \times 10^{-6}</katex>
+                  <span class="katex">\scriptsize 2.013448 \times 10^{-3}</span>
                 </li>
               </ul>
               <p>Top 5 contributors by indegree closeness:</p>
@@ -409,76 +482,90 @@
                     <td>1.</td>
                     <td><a href="https://github.com/jashkenas" target="_blank">jashkenas</a></td>
                     <td>
-                      <katex>\small 5.287704 \times 10^{-6}</katex>
+                      <span class="katex">\footnotesize 2.037482 \times 10^{-3}</span>
                     </td>
                   </tr>
                   <tr>
                     <td>2.</td>
                     <td><a href="https://github.com/hueniverse" target="_blank">hueniverse</a></td>
                     <td>
-                      <katex>\small 5.260611 \times 10^{-6}</katex>
+                      <span class="katex">\footnotesize 2.032695 \times 10^{-3}</span>
                     </td>
                   </tr>
                   <tr>
                     <td>3.</td>
                     <td><a href="https://github.com/matthewloring" target="_blank">matthewloring</a></td>
                     <td>
-                      <katex>\small 5.241173 \times 10^{-6}</katex>
+                      <span class="katex">\footnotesize 2.029963 \times 10^{-3}</span>
                     </td>
                   </tr>
                   <tr>
                     <td>4.</td>
                     <td><a href="https://github.com/getify" target="_blank">getify</a></td>
                     <td>
-                      <katex>\small 5.234944 \times 10^{-6}</katex>
+                      <span class="katex">\footnotesize 2.028092 \times 10^{-3}</span>
                     </td>
                   </tr>
                   <tr>
                     <td>5.</td>
                     <td><a href="https://github.com/mariano" target="_blank">mariano</a></td>
                     <td>
-                      <katex>\small 5.227938 \times 10^{-6}</katex>
+                      <span class="katex">\footnotesize 2.027104 \times 10^{-3}</span>
                     </td>
                   </tr>
                 </tbody>
               </table>
             </div>
-            <div class="column column-50 text-center">
-              <img src="./img/indegree_closeness_histogram.svg">
-              <em>Figure 12: Contributor indegree closeness histogram.</em>
+            <div class="column">
+              <div class="column">
+                <div class="plot">
+                  <img src="./img/contributor_incloseness_histogram.svg">
+                  <div class="plot-description">
+                    Figure 12: Contributor indegree closeness histogram.
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="row text-center">
-            <div class="column column-50">
-              <img src="./img/indegree_closeness_n_commits.svg">
-              <em>Figure 13: Number of commits with respect to indegree closeness.</em>
+          <div class="row">
+            <div class="column">
+              <div class="plot">
+                <img src="./img/contributor_incloseness_n_commits.svg">
+                <div class="plot-description">
+                  Figure 13: Number of commits with respect to indegree closeness.
+                </div>
+              </div>
             </div>
-            <div class="column column-50">
-              <img src="./img/indegree_closeness_n_commits_log.svg">
-              <em>Figure 14: Number of commits (log) with respect to indegree closeness.</em>
+            <div class="column">
+              <div class="plot">
+                <img src="./img/contributor_incloseness_n_commits_log.svg">
+                <div class="plot-description">
+                  Figure 14: Number of commits (log) with respect to indegree closeness.
+                </div>
+              </div>
             </div>
           </div>
         </blockquote>
         <h5 id="contributor-outdegree-closeness">Outdegree Closeness</h5>
         <blockquote>
           <div class="row">
-            <div class="column column-50">
+            <div class="column">
               <p>The outdegree closeness centrality of a node is a measure of centrality in a network, calculated as the sum
                 of the length of the shortest paths between the node and all other nodes in the directed graph. Thus the
                 more central a node is, the closer it is to all other nodes.</p>
               <div class="text-center" style="margin-bottom: 20px;">
-                <katex>\Large C(x)=\frac{N - 1}{\sum_yd(y,x)}</katex>
+                <span class="katex">\Large C(x)=\frac{N - 1}{\sum_yd(y,\space x)}</span>
               </div>
               <p>Where
-                <katex>d(y,x)</katex> is the distance between vertices
-                <katex>x</katex> and
-                <katex>y</katex>.</p>
+                <span class="katex">\footnotesize d(y,x)</span> is the distance between vertices
+                <span class="katex">\footnotesize x</span> and
+                <span class="katex">\footnotesize y</span>.</p>
               <ul>
                 <li>Mean outdegree closeness:
-                  <katex>1.068113 \times 10^{-5}</katex>
+                  <span class="katex">\scriptsize 1.068113 \times 10^{-5}</span>
                 </li>
                 <li>Median outdegree closeness:
-                  <katex>1.441878 \times 10^{-5}</katex>
+                  <span class="katex">\scriptsize 1.441878 \times 10^{-5}</span>
                 </li>
               </ul>
               <p>Top 5 contributors by outdegree closeness:</p>
@@ -488,53 +575,63 @@
                     <td>1.</td>
                     <td><a href="https://github.com/jamesanthonyferguson" target="_blank">jamesanthonyferguson</a></td>
                     <td>
-                      <katex>\small 1.498374 \times 10^{-5}</katex>
+                      <span class="katex">\footnotesize 1.498374 \times 10^{-5}</span>
                     </td>
                   </tr>
                   <tr>
                     <td>2.</td>
                     <td><a href="https://github.com/ateich" target="_blank">ateich</a></td>
                     <td>
-                      <katex>\small 1.496872 \times 10^{-5}</katex>
+                      <span class="katex">\footnotesize 1.496872 \times 10^{-5}</span>
                     </td>
                   </tr>
                   <tr>
                     <td>3.</td>
                     <td><a href="https://github.com/stevejs" target="_blank">stevejs</a></td>
                     <td>
-                      <katex>\small 1.489603 \times 10^{-5}</katex>
+                      <span class="katex">\footnotesize 1.489603 \times 10^{-5}</span>
                     </td>
                   </tr>
                   <tr>
                     <td>4.</td>
                     <td><a href="https://github.com/cusspvz" target="_blank">cusspvz</a></td>
                     <td>
-                      <katex>\small 1.484583 \times 10^{-5}</katex>
+                      <span class="katex">\footnotesize 1.484583 \times 10^{-5}</span>
                     </td>
                   </tr>
                   <tr>
                     <td>5.</td>
                     <td><a href="https://github.com/doug-wade" target="_blank">doug-wade</a></td>
                     <td>
-                      <katex>\small 1.479728 \times 10^{-5}</katex>
+                      <span class="katex">\footnotesize 1.479728 \times 10^{-5}</span>
                     </td>
                   </tr>
                 </tbody>
               </table>
             </div>
-            <div class="column column-50 text-center">
-              <img src="./img/outdegree_closeness_histogram.svg">
-              <em>Figure 15: Contributor outdegree closeness histogram.</em>
+            <div class="column">
+              <div class="plot">
+                <img src="./img/contributor_outcloseness_histogram.svg">
+                <div class="plot-description">
+                  Figure 15: Contributor outdegree closeness histogram.
+                </div>
+              </div>
             </div>
           </div>
-          <div class="row text-center">
-            <div class="column column-50">
-              <img src="./img/outdegree_closeness_n_commits.svg">
-              <em>Figure 16: Number of commits with respect to outdegree closeness.</em>
+          <div class="row">
+            <div class="column">
+              <div class="plot">
+                <img src="./img/contributor_outcloseness_n_commits.svg">
+                <div class="plot-description">
+                  Figure 16: Number of commits with respect to outdegree closeness.
+                </div>
+              </div>
             </div>
-            <div class="column column-50">
-              <img src="./img/outdegree_closeness_n_commits_log.svg">
-              <em>Figure 17: Number of commits (log) with respect to outdegree closeness.</em>
+            <div class="column">
+              <div class="plot">
+                <img src="./img/contributor_outcloseness_n_commits_log.svg">
+                <div class="plot-description">Figure 17: Number of commits (log) with respect to outdegree closeness.</div>
+              </div>
             </div>
           </div>
         </blockquote>
