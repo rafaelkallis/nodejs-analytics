@@ -8,113 +8,88 @@
   <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi"
   />
   <title>NodeJS Analytics</title>
-  <link rel="stylesheet" href="./css/vendor.css" type="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.2.4/milligram.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/katex.min.css">
   <link rel="stylesheet" href="./css/app.css" type="stylesheet">
-  <script src="./js/vendor.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/katex.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/contrib/auto-render.min.js"></script>
   <script src="./js/app.js"></script>
   <script>require('initialize');</script>
 </head>
 
 <body>
   <div class="container" style="margin-top:50px;">
-    <h3>NodeJS Analytics</h3>
-    <p>by <a href="http://rafaelkallis.com" target="_blank">Rafael Kallis</a></p>
-    <p><a href="https://nodejs.org/en/about/" target="_blank">Node.js</a> is a JavaScript runtime built on Chrome's V8 JavaScript
-      engine. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient. The Node.js package
-      ecosystem, npm, is the largest ecosystem of open source libraries in the world.</p>
-    <p>Below you can find a network analysis of the Node.js github repository. The analysis is focused exclusively on github
-      users which have contributed to the Node.js repository, or have interacted with a contributor. Please note that data
-      from not registered users is not included in the analysis.</p>
-    <p>The analysis is based on data extracted by <a href="http://rafaelkallis.com" target="_blank">me</a> from the public
-      <a href="https://developer.github.com/v3/" target="_blank">GitHub API</a> using my <a href="https://github.com/rafaelkallis/uzh-github-spider"
-        target="_blank">homemade github crawler</a>. All content is open source and may be used freely for any purpose.
-      <div class="row">
-        <div class="column">
-          <div class="plot">
-            <img src="./img/overview_graph.svg">
-            <div class="plot-description">Abstract overview over the collected data. In the core we have the contributors. Edges are directed and represent
-              a "follows" relationship. In the outer ring, we have users which have a relationship to contributors, but didn't
-              contribute to Node.js
-            </div>
-          </div>
-        </div>
-      </div>
-      <h4>Table of contents</h4>
-      <div class="row">
-        <div class="column">
-          <ol>
-            <li><a href="#contributor">Contributor Network</a>
-              <ul>
-                <li><a href="#commits">Commits</a></li>
-                <li><a href="#contributor-indegree">Indegree</a></li>
-                <li><a href="#contributor-outdegree">Outdegree</a></li>
-                <li><a href="#contributor-betweenness">Betweenness</a></li>
-                <li><a href="#contributor-indegree-closeness">Indegree Closeness</a></li>
-                <li><a href="#contributor-indegree-closeness">Outdegree Closeness</a></li>
-              </ul>
-            </li>
-          </ol>
-        </div>
-      </div>
-
-      <div id="contributor">
-        <h5>Contributor Network</h5>
-        <p>First some analysis has been conducted on users which have contributed to the project.</p>
+    <div class="row">
+      <div class="column">
         <div class="row">
           <div class="column">
-            <div class="plot">
+            <h3>NodeJS Analytics</h3>
+            <p>by <a href="http://rafaelkallis.com" target="_blank">Rafael Kallis</a></p>
+            <p class="paragraph"><a href="https://nodejs.org/en/about/" target="_blank">Node.js</a> is a JavaScript runtime built on Chrome's
+              V8 JavaScript engine. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient.
+              The Node.js package ecosystem, npm, is the largest ecosystem of open source libraries in the world.</p>
+            <p class="paragraph">Below you can find a network analysis on the Node.js github repository. The analysis is focused exclusively on
+              github users which have contributed to the Node.js repository, or have interacted with a contributor. In the
+              first part of the analysis, we will focus only on relationships between contributors. On the second part, we
+              will focus on relationships between contributors and non contributors.</p>
+            <p class="paragraph">The analysis is based on data extracted by <a href="http://rafaelkallis.com" target="_blank">the author</a> from
+              the public
+              <a href="https://developer.github.com/v3/" target="_blank">GitHub API</a> using the <a href="https://github.com/rafaelkallis/uzh-github-spider"
+                target="_blank">homemade github crawler</a>. A CSV can be downloaded from <a href="./data/data.csv" target="_blank">here</a>.
+              All content is open source and may be used freely for any purpose.
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="column">
+            <div class="plot plot-large">
               <img src="./img/contributor_digraph.svg" style="width: 100%;">
               <div class="plot-description">
                 Figure 1: Node.js contributor graph. Isolated nodes ommited. Number of commits (log) determines the size of vertices.
               </div>
             </div>
           </div>
-          <div class="column" style="margin: auto;">
-            <h5>Node.js contributor metrics:</h5>
-            <ul class="indent">
-              <li>
-                Network size:
-                <span class="katex">\scriptsize 1066</span>
-              </li>
-              <li>
-                Indegree centralization score:
-                <span class="katex">\scriptsize 0.1810956</span>
-              </li>
-              <li>
-                Outdegree centralisation score:
-                <span class="katex">\scriptsize 0.426166</span>
-              </li>
-              <li>
-                Clustering coefficient:
-                <span class="katex">\scriptsize 0.1674887</span>
-              </li>
-              <li>
-                Average path length:
-                <span class="katex">\scriptsize 3.97246</span>
-              </li>
-              <li>
-                Diameter:
-                <span class="katex">\scriptsize 10</span>
-              </li>
-            </ul>
-          </div>
         </div>
+        <h5>Table of contents</h5>
+        <ol>
+          <li>
+            <a href="#commits">Contributor commits</a>
+          </li>
+          <li><a href="#contributor">Contributor Network</a>
+            <ul>
+              <li><a href="#contributor-indegree">Indegree</a></li>
+              <li><a href="#contributor-outdegree">Outdegree</a></li>
+              <li><a href="#contributor-betweenness">Betweenness</a></li>
+              <li><a href="#contributor-indegree-closeness">Indegree Closeness</a></li>
+              <li><a href="#contributor-outdegree-closeness">Outdegree Closeness</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#outer-network">Outer Network</a>
+            <ul>
+              <li><a href="#outer-indegree">Indegree</a></li>
+              <li><a href="#outer-outdegree">Outdegree</a></li>
+              <li><a href="#outer-betweenness">Betweenness</a></li>
+              <li><a href="#outer-indegree-closeness">Indegree Closeness</a></li>
+              <li><a href="#outer-outdegree-closeness">Outdegree Closeness</a></li>
+            </ul>
+          </li>
+        </ol>
         <hr/>
-        <h5 id="commits">Commits</h5>
+        <h5 id="commits" class="chapter">Commits</h5>
         <blockquote>
           <div class="row">
             <div class="column">
               <ul>
-                <li>Number of commits:
-                  <span class="katex">\scriptsize 14415</span>
+                <li>Number of commits: $14415$
                 </li>
                 <li>
-                  Mean commits:
-                  <span class="katex">\scriptsize 17.818</span>
+                  Mean commits: $17.818$
                 </li>
                 <li>
-                  Median commits:
-                  <span class="katex">\scriptsize 1</span>
+                  Median commits: $1$
                 </li>
               </ul>
               <p>Top 5 contributors by commits:</p>
@@ -124,35 +99,35 @@
                     <td>1.</td>
                     <td><a href="https://github.com/ry" target="_blank">ry</a></td>
                     <td>
-                      <span class="katex">\footnotesize 3021</span>
+                      $3021$
                     </td>
                   </tr>
                   <tr>
                     <td>2.</td>
                     <td><a href="https://github.com/bnoordhuis" target="_blank">bnoordhuis</a></td>
                     <td>
-                      <span class="katex">\footnotesize 1911</span>
+                      $1911$
                     </td>
                   </tr>
                   <tr>
                     <td>3.</td>
                     <td><a href="https://github.com/isaacs" target="_blank">isaacs</a></td>
                     <td>
-                      <span class="katex">\footnotesize 1630</span>
+                      $1630$
                     </td>
                   </tr>
                   <tr>
                     <td>4.</td>
                     <td><a href="https://github.com/indutny" target="_blank">indutny</a></td>
                     <td>
-                      <span class="katex">\footnotesize 741</span>
+                      $741$
                     </td>
                   </tr>
                   <tr>
                     <td>5.</td>
                     <td><a href="https://github.com/piscisaureus" target="_blank">piscisaureus</a></td>
                     <td>
-                      <span class="katex">\footnotesize 595</span>
+                      $595$
                     </td>
                   </tr>
                 </tbody>
@@ -168,20 +143,41 @@
             </div>
           </div>
         </blockquote>
+        <h4 id="contributor" class="chapter">Contributor Network</h4>
+        <p>First some analysis has been conducted on users which have contributed to the project.</p>
+        <p>Node.js contributor metrics:</p>
+        <ul class="indent">
+          <li>
+            Network size: $1066$
+          </li>
+          <li>
+            Indegree centralization score: $0.1810956$
+          </li>
+          <li>
+            Outdegree centralisation score: $0.426166$
+          </li>
+          <li>
+            Clustering coefficient: $0.1674887$
+          </li>
+          <li>
+            Average path length: $3.97246$
+          </li>
+          <li>
+            Diameter: $10$
+          </li>
+        </ul>
         <hr/>
-        <h5 id="contributor-indegree">Indegree</h5>
+        <h5 id="contributor-indegree" class="chapter">Indegree</h5>
         <blockquote>
           <div class="row">
             <div class="column">
               <p>Indegree is defined as the number of contributors following a specific contributor. All values are normalised.</p>
               <ul>
                 <li>
-                  Mean indegree:
-                  <span class="katex">\scriptsize 5.758881 \times 10^{-3}</span>
+                  Mean indegree: $5.758881 \times 10^{-3}$
                 </li>
                 <li>
-                  Median indegree:
-                  <span class="katex">\scriptsize 9.389671 \times 10^{-4}</span>
+                  Median indegree: $9.389671 \times 10^{-4}$
                 </li>
               </ul>
               <p>Top 5 contributors by indegree:</p>
@@ -191,35 +187,35 @@
                     <td>1.</td>
                     <td><a href="https://github.com/tj" target="_blank">tj</a></td>
                     <td>
-                      <span class="katex">\footnotesize 1.8685446 \times 10^{-1}</span>
+                      $1.8685446 \times 10^{-1}$
                     </td>
                   </tr>
                   <tr>
                     <td>2.</td>
                     <td><a href="https://github.com/isaacs" target="_blank">isaacs</a></td>
                     <td>
-                      <span class="katex">\footnotesize 1.6995305 \times 10^{-1}</span>
+                      $1.6995305 \times 10^{-1}$
                     </td>
                   </tr>
                   <tr>
                     <td>3.</td>
                     <td><a href="https://github.com/substack" target="_blank">substack</a></td>
                     <td>
-                      <span class="katex">\footnotesize 1.6431925 \times 10^{-1}</span>
+                      $1.6431925 \times 10^{-1}$
                     </td>
                   </tr>
                   <tr>
                     <td>4.</td>
                     <td><a href="https://github.com/ry" target="_blank">ry</a></td>
                     <td>
-                      <span class="katex">\footnotesize 1.3239437 \times 10^{-1}</span>
+                      $1.3239437 \times 10^{-1}$
                     </td>
                   </tr>
                   <tr>
                     <td>5.</td>
                     <td><a href="https://github.com/indutny" target="_blank">indutny</a></td>
                     <td>
-                      <span class="katex">\footnotesize 1.0985915 \times 10^{-1}</span>
+                      $1.0985915 \times 10^{-1}$
                     </td>
                   </tr>
                 </tbody>
@@ -248,33 +244,22 @@
                 <img src="./img/contributor_indegree_log_n_commits_log.svg">
                 <div class="plot-description">
                   Figure 5: Number of commits (log) with respect to indegree (log).
-                  <div class="row">
-                    <div class="column">
-                      <span class="katex">\scriptsize \log n_{commits}=\alpha_{fit} + \beta_{fit} \log deg_{in}(v),</span>
-                    </div>
-                    <div class="column">
-                      <span class="katex">\scriptsize \beta_{fit} = 0.53556, \quad R^2=0.2505</span>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
           </div>
         </blockquote>
-        <hr/>
-        <h5 id="contributor-outdegree">Outdegree</h5>
+        <h5 id="contributor-outdegree" class="chapter">Outdegree</h5>
         <blockquote>
           <div class="row">
             <div class="column">
               <p>Outdegree is defined as the number of contributors a specific contributor follows. All values are normalised.</p>
               <ul>
                 <li>
-                  Mean outdegree:
-                  <span class="katex">\scriptsize 5.758881 \times 10^{-3}</span>
+                  Mean outdegree: $5.758881 \times 10^{-3}$
                 </li>
                 <li>
-                  Median outdegree:
-                  <span class="katex">\scriptsize 9.389671 \times 10^{-4}</span>
+                  Median outdegree: $9.389671 \times 10^{-4}$
                 </li>
               </ul>
               <p>Top 5 contributors by outdegree:</p>
@@ -284,35 +269,35 @@
                     <td>1.</td>
                     <td><a href="https://github.com/cusspvz" target="_blank">cusspvz</a></td>
                     <td>
-                      <span class="katex">\footnotesize 4.3192488 \times 10^{-1}</span>
+                      $4.3192488 \times 10^{-1}$
                     </td>
                   </tr>
                   <tr>
                     <td>2.</td>
                     <td><a href="https://github.com/Sannis" target="_blank">Sannis</a></td>
                     <td>
-                      <span class="katex">\footnotesize 1.6244131 \times 10^{-1}</span>
+                      $1.6244131 \times 10^{-1}$
                     </td>
                   </tr>
                   <tr>
                     <td>3.</td>
                     <td><a href="https://github.com/roryrjb" target="_blank">roryrjb</a></td>
                     <td>
-                      <span class="katex">\footnotesize 1.5211268 \times 10^{-1}</span>
+                      $1.5211268 \times 10^{-1}$
                     </td>
                   </tr>
                   <tr>
                     <td>4.</td>
                     <td><a href="https://github.com/stevemao" target="_blank">stevemao</a></td>
                     <td>
-                      <span class="katex">\footnotesize 9.859155 \times 10^{-2}</span>
+                      $9.859155 \times 10^{-2}$
                     </td>
                   </tr>
                   <tr>
                     <td>5.</td>
                     <td><a href="https://github.com/rjrodger" target="_blank">rjrodger</a></td>
                     <td>
-                      <span class="katex">\footnotesize 9.577465 \times 10^{-2}</span>
+                      $9.577465 \times 10^{-2}$
                     </td>
                   </tr>
                 </tbody>
@@ -337,41 +322,22 @@
                 <img src="./img/contributor_outdegree_log_n_commits_log.svg">
                 <div class="plot-description">
                   Figure 8: Number of commits (log) with respect to outdegree (log).
-                  <div class="row">
-                    <div class="column">
-                      <span class="katex">\scriptsize n_{commits}=\alpha + \beta \log deg_{out}(v),</span>
-                    </div>
-                    <div class="column">
-                      <span class="katex">\scriptsize \beta_{fit} = 0.17396, \quad R^2=0.02517</span>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
           </div>
         </blockquote>
-        <hr/>
-        <h5 id="contributor-betweenness">Betweenness</h5>
+        <h5 id="contributor-betweenness" class="chapter">Betweenness</h5>
         <blockquote>
           <div class="row">
             <div class="column">
               <p>Betweenness centrality quantifies the number of times a node acts as a bridge along the shortest path between
-                two other nodes.</p>
-              <div class="text-center" style="margin-bottom: 20px;">
-                <span class="katex">\Large C_B(v)=\huge\sum\limits_{\large s \ne v \ne t \in V} \Large \frac{\sigma_{st}(v)}{\sigma_{st}}</span>
-              </div>
-              <p>Where
-                <span class="katex">\footnotesize \sigma_{st}</span> is the total number of shortest paths from node
-                <span class="katex">\footnotesize s</span> to node
-                <span class="katex">\footnotesize t</span> and
-                <span class="katex">\footnotesize \sigma_{st}(v)</span> is the number of those paths that pass through
-                <span class="katex">\footnotesize v</span>. All following values are normalised.</p>
+                two other nodes. All values are normalised.
+              </p>
               <ul>
-                <li>Mean betweenness:
-                  <span class="katex">\scriptsize 2.340707 \times 10^{-3}</span>
+                <li>Mean betweenness: $2.340707 \times 10^{-3}$
                 </li>
-                <li>Median betweenness:
-                  <span class="katex">\scriptsize 7.818556 \times 10^{-7}</span>
+                <li>Median betweenness: $7.818556 \times 10^{-7}$
                 </li>
               </ul>
               <p>Top 5 contributors by betweenness:</p>
@@ -381,35 +347,35 @@
                     <td>1.</td>
                     <td><a href="https://github.com/cusspvz" target="_blank">cusspvz</a></td>
                     <td>
-                      <span class="katex">\footnotesize 2.1450663 \times 10^{-1}</span>
+                      $2.1450663 \times 10^{-1}$
                     </td>
                   </tr>
                   <tr>
                     <td>2.</td>
                     <td><a href="https://github.com/tj" target="_blank">tj</a></td>
                     <td>
-                      <span class="katex">\footnotesize 1.7286757 \times 10^{-1}</span>
+                      $1.7286757 \times 10^{-1}$
                     </td>
                   </tr>
                   <tr>
                     <td>3.</td>
                     <td><a href="https://github.com/fixe" target="_blank">fixe</a></td>
                     <td>
-                      <span class="katex">\footnotesize 1.4029286 \times 10^{-1}</span>
+                      $1.4029286 \times 10^{-1}$
                     </td>
                   </tr>
                   <tr>
                     <td>4.</td>
                     <td><a href="https://github.com/substack" target="_blank">substack</a></td>
                     <td>
-                      <span class="katex">\footnotesize 7.8804678 \times 10^{-2}</span>
+                      $7.8804678 \times 10^{-2}$
                     </td>
                   </tr>
                   <tr>
                     <td>5.</td>
                     <td><a href="https://github.com/maxogden" target="_blank">maxogden</a></td>
                     <td>
-                      <span class="katex">\footnotesize 5.6528457 \times 10^{-2}</span>
+                      $5.6528457 \times 10^{-2}$
                     </td>
                   </tr>
                 </tbody>
@@ -438,41 +404,23 @@
                 <img src="./img/contributor_betweenness_log_n_commits_log.svg">
                 <div class="plot-description">
                   Figure 11: Number of commits (log) with respect to betweenness (log).
-                  <div class="row">
-                    <div class="column">
-                      <span class="katex">\scriptsize n_{commits} = \alpha + \beta \log C_{bv},</span>
-                    </div>
-                    <div class="column">
-                      <span class="katex">\scriptsize \beta_{fit} =0.1507, \quad R^2=0.1142</span>
-                    </div>
-                  </div>
-
                 </div>
               </div>
             </div>
           </div>
         </blockquote>
-        <hr/>
-        <h5 id="contributor-indegree-closeness">Indegree Closeness</h5>
+        <h5 id="contributor-indegree-closeness" class="chapter">Indegree Closeness</h5>
         <blockquote>
           <div class="row">
             <div class="column">
               <p>The indegree closeness centrality of a node is a measure of centrality in a network, calculated as the sum
                 of the length of the shortest paths between the node and all other nodes in the directed graph. Thus the
-                more central a node is, the closer it is to all other nodes.</p>
-              <div class="text-center" style="margin-bottom: 20px;">
-                <span class="katex">\Large C(x)=\frac{N - 1}{\sum_yd(y,\space x)}</span>
-              </div>
-              <p>Where
-                <span class="katex">\footnotesize d(y,x)</span> is the distance between vertices
-                <span class="katex">\footnotesize x</span> and
-                <span class="katex">\footnotesize y</span>.</p>
+                more central a node is, the closer it is to all other nodes.
+              </p>
               <ul>
-                <li>Mean indegree closeness:
-                  <span class="katex">\scriptsize 1.672692 \times 10^{-3}</span>
+                <li>Mean indegree closeness: $1.672692 \times 10^{-3}$
                 </li>
-                <li>Median indegree closeness:
-                  <span class="katex">\scriptsize 2.013448 \times 10^{-3}</span>
+                <li>Median indegree closeness: $2.013448 \times 10^{-3}$
                 </li>
               </ul>
               <p>Top 5 contributors by indegree closeness:</p>
@@ -482,35 +430,35 @@
                     <td>1.</td>
                     <td><a href="https://github.com/jashkenas" target="_blank">jashkenas</a></td>
                     <td>
-                      <span class="katex">\footnotesize 2.037482 \times 10^{-3}</span>
+                      $2.037482 \times 10^{-3}$
                     </td>
                   </tr>
                   <tr>
                     <td>2.</td>
                     <td><a href="https://github.com/hueniverse" target="_blank">hueniverse</a></td>
                     <td>
-                      <span class="katex">\footnotesize 2.032695 \times 10^{-3}</span>
+                      $2.032695 \times 10^{-3}$
                     </td>
                   </tr>
                   <tr>
                     <td>3.</td>
                     <td><a href="https://github.com/matthewloring" target="_blank">matthewloring</a></td>
                     <td>
-                      <span class="katex">\footnotesize 2.029963 \times 10^{-3}</span>
+                      $2.029963 \times 10^{-3}$
                     </td>
                   </tr>
                   <tr>
                     <td>4.</td>
                     <td><a href="https://github.com/getify" target="_blank">getify</a></td>
                     <td>
-                      <span class="katex">\footnotesize 2.028092 \times 10^{-3}</span>
+                      $2.028092 \times 10^{-3}$
                     </td>
                   </tr>
                   <tr>
                     <td>5.</td>
                     <td><a href="https://github.com/mariano" target="_blank">mariano</a></td>
                     <td>
-                      <span class="katex">\footnotesize 2.027104 \times 10^{-3}</span>
+                      $2.027104 \times 10^{-3}$
                     </td>
                   </tr>
                 </tbody>
@@ -546,26 +494,18 @@
             </div>
           </div>
         </blockquote>
-        <h5 id="contributor-outdegree-closeness">Outdegree Closeness</h5>
+        <h5 id="contributor-outdegree-closeness" class="chapter">Outdegree Closeness</h5>
         <blockquote>
           <div class="row">
             <div class="column">
               <p>The outdegree closeness centrality of a node is a measure of centrality in a network, calculated as the sum
                 of the length of the shortest paths between the node and all other nodes in the directed graph. Thus the
-                more central a node is, the closer it is to all other nodes.</p>
-              <div class="text-center" style="margin-bottom: 20px;">
-                <span class="katex">\Large C(x)=\frac{N - 1}{\sum_yd(y,\space x)}</span>
-              </div>
-              <p>Where
-                <span class="katex">\footnotesize d(y,x)</span> is the distance between vertices
-                <span class="katex">\footnotesize x</span> and
-                <span class="katex">\footnotesize y</span>.</p>
+                more central a node is, the closer it is to all other nodes.
+              </p>
               <ul>
-                <li>Mean outdegree closeness:
-                  <span class="katex">\scriptsize 1.068113 \times 10^{-5}</span>
+                <li>Mean outdegree closeness: $1.068113 \times 10^{-5}$
                 </li>
-                <li>Median outdegree closeness:
-                  <span class="katex">\scriptsize 1.441878 \times 10^{-5}</span>
+                <li>Median outdegree closeness: $1.441878 \times 10^{-5}$
                 </li>
               </ul>
               <p>Top 5 contributors by outdegree closeness:</p>
@@ -575,35 +515,35 @@
                     <td>1.</td>
                     <td><a href="https://github.com/jamesanthonyferguson" target="_blank">jamesanthonyferguson</a></td>
                     <td>
-                      <span class="katex">\footnotesize 1.498374 \times 10^{-5}</span>
+                      $1.498374 \times 10^{-5}$
                     </td>
                   </tr>
                   <tr>
                     <td>2.</td>
                     <td><a href="https://github.com/ateich" target="_blank">ateich</a></td>
                     <td>
-                      <span class="katex">\footnotesize 1.496872 \times 10^{-5}</span>
+                      $1.496872 \times 10^{-5}$
                     </td>
                   </tr>
                   <tr>
                     <td>3.</td>
                     <td><a href="https://github.com/stevejs" target="_blank">stevejs</a></td>
                     <td>
-                      <span class="katex">\footnotesize 1.489603 \times 10^{-5}</span>
+                      $1.489603 \times 10^{-5}$
                     </td>
                   </tr>
                   <tr>
                     <td>4.</td>
                     <td><a href="https://github.com/cusspvz" target="_blank">cusspvz</a></td>
                     <td>
-                      <span class="katex">\footnotesize 1.484583 \times 10^{-5}</span>
+                      $1.484583 \times 10^{-5}$
                     </td>
                   </tr>
                   <tr>
                     <td>5.</td>
                     <td><a href="https://github.com/doug-wade" target="_blank">doug-wade</a></td>
                     <td>
-                      <span class="katex">\footnotesize 1.479728 \times 10^{-5}</span>
+                      $1.479728 \times 10^{-5}$
                     </td>
                   </tr>
                 </tbody>
@@ -635,7 +575,439 @@
             </div>
           </div>
         </blockquote>
+        <h4 id="outer-network">Outer network</h4>
+        <p>In this part we will analyse the relationship of Node.js contributors to non contributors.</p>
+        <div class="row">
+          <div class="column">
+            <p>Node.js outer network metrics:</p>
+            <ul class="indent">
+              <li>
+                Network size: $214512$
+              </li>
+              <li>
+                Indegree centralization score: $0.1106474$
+              </li>
+              <li>
+                Outdegree centralisation score: $0.6055917$
+              </li>
+              <li>
+                Clustering coefficient: $0$
+              </li>
+              <li>
+                Average path length: $5.007563$
+              </li>
+              <li>
+                Diameter: $14$
+              </li>
+            </ul>
+          </div>
+        </div>
+        <h5 id="outer-indegree" class="chapter">Indegree</h5>
+        <blockquote>
+          <div class="row">
+            <div class="column">
+              <p>
+                Indegree is defined as the number of any non contributor following a contributor. Values are not normalised.
+              </p>
+              <ul>
+                <li>Mean indegree: $2.316764 \times 10^2$</li>
+                <li>Median indegree: $3.65 \times 10^1$</li>
+              </ul>
+              <p>Top 5 contributors by indegree:</p>
+              <table>
+                <tbody>
+                  <tr>
+                    <td>1.</td>
+                    <td><a href="https://github.com/tj" target="_blank">tj</a></td>
+                    <td>
+                      $2.3737 \times 10^4$
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2.</td>
+                    <td><a href="https://github.com/substack" target="_blank">substack</a></td>
+                    <td>
+                      $9.959 \times 10^3$
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>3.</td>
+                    <td><a href="https://github.com/jashkenas" target="_blank">jashkenas</a></td>
+                    <td>
+                      $9.856 \times 10^3$
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>4.</td>
+                    <td><a href="https://github.com/JacksonTian" target="_blank">JacksonTian</a></td>
+                    <td>
+                      $9.802 \times 10^3$
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>5.</td>
+                    <td><a href="https://github.com/isaacs" target="_blank">isaacs</a></td>
+                    <td>
+                      $5.938 \times 10^3$
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="column">
+              <div class="plot">
+                <img src="./img/outer_indegree_log_histogram.svg">
+                <div class="plot-description">
+                  Figure 18: Indegree (log) histogram.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="column">
+              <div class="plot">
+                <img src="./img/outer_indegree_n_commits.svg">
+                <div class="plot-description">
+                  Figure 19: Number of commits with respect to indegree.
+                </div>
+              </div>
+            </div>
+            <div class="column">
+              <div class="plot">
+                <img src="./img/outer_indegree_log_n_commits_log.svg">
+                <div class="plot-description">
+                  Figure 20: Number of commits (log) with respect to indegree (log).
+                </div>
+              </div>
+            </div>
+          </div>
+        </blockquote>
+        <h5 id="outer-outdegree" class="chapter">Outdegree</h5>
+        <blockquote>
+          <div class="row">
+            <div class="column">
+              <p>
+                Outdegree is defined as the number of contributors following any non-contributor. Values are not normalised.
+              </p>
+              <ul>
+                <li>Mean indegree: $1.55622 \times 10^{-2}$</li>
+                <li>Median indegree: $10$</li>
+              </ul>
+              <p>Top 5 contributors by outdegree:</p>
+              <table>
+                <tbody>
+                  <tr>
+                    <td>1.</td>
+                    <td><a href="https://github.com/cusspvz" target="_blank">cusspvz</a></td>
+                    <td>
+                      $1.29908 \times 10^5$
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2.</td>
+                    <td><a href="https://github.com/Sannis" target="_blank">Sannis</a></td>
+                    <td>
+                      $1.101 \times 10^3$
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>3.</td>
+                    <td><a href="https://github.com/roryrjb" target="_blank">roryrjb</a></td>
+                    <td>
+                      $1.026 \times 10^3$
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>4.</td>
+                    <td><a href="https://github.com/errordeveloper" target="_blank">errordeveloper</a></td>
+                    <td>
+                      $9.63 \times 10^2$
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>5.</td>
+                    <td><a href="https://github.com/springmeyer" target="_blank">springmeyer</a></td>
+                    <td>
+                      $8 \times 10^2$
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="column">
+              <div class="plot">
+                <img src="./img/outer_outdegree_log_histogram.svg">
+                <div class="plot-description">
+                  Figure 21: Outdegree (log) histogram.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="column">
+              <div class="plot">
+                <img src="./img/outer_outdegree_n_commits.svg">
+                <div class="plot-description">
+                  Figure 22: Number of commits with respect to outdegree.
+                </div>
+              </div>
+            </div>
+            <div class="column">
+              <div class="plot">
+                <img src="./img/outer_outdegree_log_n_commits_log.svg">
+                <div class="plot-description">
+                  Figure 23: Number of commits (log) with respect to outdegree (log).
+                </div>
+              </div>
+            </div>
+          </div>
+        </blockquote>
+        <h5 id="outer-betweenness" class="chapter">Betweenness</h5>
+        <blockquote>
+          <div class="row">
+            <div class="column">
+              <p>
+                Betweenness centrality quantifies the number of times a node acts as a bridge along the shortest path between two other nodes.
+              </p>
+              <ul>
+                <li>Mean betweenness: $3.4174197 \times 10^7$</li>
+                <li>Median betweenness: $2.173335 \times 10^6$</li>
+              </ul>
+              <p>Top 5 contributors by betweenness:</p>
+              <table>
+                <tbody>
+                  <tr>
+                    <td>1.</td>
+                    <td><a href="https://github.com/cusspvz" target="_blank">cusspvz</a></td>
+                    <td>
+                      $12944848888 \times 10^{10}$
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2.</td>
+                    <td><a href="https://github.com/tj" target="_blank">tj</a></td>
+                    <td>
+                      $3400372130 \times 10^9$
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>3.</td>
+                    <td><a href="https://github.com/substack" target="_blank">substack</a></td>
+                    <td>
+                      $2.816072775 \times 10^9$
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>4.</td>
+                    <td><a href="https://github.com/maxogden" target="_blank">maxogden</a></td>
+                    <td>
+                      $8.40861175 \times 10^8$
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>5.</td>
+                    <td><a href="https://github.com/JacksonTian" target="_blank">JacksonTian</a></td>
+                    <td>
+                      $7.86839300 \times 10^8$
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="column">
+              <div class="plot">
+                <img src="./img/outer_betweenness_log_histogram.svg">
+                <div class="plot-description">
+                  Figure 24: Betweenness (log) histogram.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="column">
+              <div class="plot">
+                <img src="./img/outer_betweenness_n_commits.svg">
+                <div class="plot-description">
+                  Figure 25: Number of commits with respect to outdegree.
+                </div>
+              </div>
+            </div>
+            <div class="column">
+              <div class="plot">
+                <img src="./img/outer_betweenness_log_n_commits_log.svg">
+                <div class="plot-description">
+                  Figure 26: Number of commits (log) with respect to outdegree (log).
+                </div>
+              </div>
+            </div>
+          </div>
+        </blockquote>
+        <h5 id="outer-incloseness" class="chapter">Indegree Closeness</h5>
+        <blockquote>
+          <div class="row">
+            <div class="column">
+              <p>
+                The indegree closeness centrality of a node is a measure of centrality in a network, calculated as the sum of the length
+                of the shortest paths between the node and all other nodes in the directed graph. Thus the more central a
+                node is, the closer it is to all other nodes.
+              </p>
+              <ul>
+                <li>Mean indegree closeness: $3.848217 \times 10^{-11}$</li>
+                <li>Median outdegree closeness: $4.033417 \times 10^{-11}$</li>
+              </ul>
+              <p>Top 5 contributors by indegree closeness:</p>
+              <table>
+                <tbody>
+                  <tr>
+                    <td>1.</td>
+                    <td><a href="https://github.com/jashkenas" target="_blank">jashkenas</a></td>
+                    <td>
+                      $4.161623 \times 10^{-11}$
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2.</td>
+                    <td><a href="https://github.com/getify" target="_blank">getify</a></td>
+                    <td>
+                      $4.131699 \times 10^{-11}$
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>3.</td>
+                    <td><a href="https://github.com/jordansissel" target="_blank">jordansissel</a></td>
+                    <td>
+                      $4.056699 \times 10^{-11}$
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>4.</td>
+                    <td><a href="https://github.com/hueniverse" target="_blank">hueniverse</a></td>
+                    <td>
+                      $4.046699 \times 10^{-11}$
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>5.</td>
+                    <td><a href="https://github.com/agl" target="_blank">agl</a></td>
+                    <td>
+                      $4.044733 \times 10^{-11}$
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="column">
+              <div class="plot">
+                <img src="./img/outer_incloseness_log_histogram.svg">
+                <div class="plot-description">
+                  Figure 27: Indegree closeness (log) histogram.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="column">
+              <div class="plot">
+                <img src="./img/outer_incloseness_n_commits.svg">
+                <div class="plot-description">
+                  Figure 28: Number of commits with respect to indegree closeness.
+                </div>
+              </div>
+            </div>
+            <div class="column">
+              <div class="plot">
+                <img src="./img/outer_incloseness_log_n_commits_log.svg">
+                <div class="plot-description">
+                  Figure 29: Number of commits (log) with respect to indegree closeness (log).
+                </div>
+              </div>
+            </div>
+          </div>
+        </blockquote>
+        <h5 id="outer-outcloseness" class="chapter">Outdegree Closeness</h5>
+        <blockquote>
+          <div class="row">
+            <div class="column">
+              <p>
+                The outdegree closeness centrality of a node is a measure of centrality in a network, calculated as the sum of the length
+                of the shortest paths between the node and all other nodes in the directed graph. Thus the more central a
+                node is, the closer it is to all other nodes.
+              </p>
+              <ul>
+                <li>Mean indegree closeness: $5.385104 \times 10^{-11}$</li>
+                <li>Median outdegree closeness: $6.953937 \times 10^{-11}$</li>
+              </ul>
+              <p>Top 5 contributors by outdegree closeness:</p>
+              <table>
+                <tbody>
+                  <tr>
+                    <td>1.</td>
+                    <td><a href="https://github.com/ss22ever" target="_blank">ss22ever</a></td>
+                    <td>
+                      $6.955598 \times 10^{-11}$
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2.</td>
+                    <td><a href="https://github.com/ojss" target="_blank">ojss</a></td>
+                    <td>
+                      $6.955182 \times 10^{-11}$
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>3.</td>
+                    <td><a href="https://github.com/soleboxy" target="_blank">soleboxy</a></td>
+                    <td>
+                      $6.954869 \times 10^{-11}$
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>4.</td>
+                    <td><a href="https://github.com/CraigCav" target="_blank">CraigCav</a></td>
+                    <td>
+                      $6.954767 \times 10^{-11}$
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>5.</td>
+                    <td><a href="https://github.com/wzoom" target="_blank">wzoom</a></td>
+                    <td>
+                      $6.954560 \times 10^{-11}$
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="column">
+              <div class="plot">
+                <img src="./img/outer_outcloseness_histogram.svg">
+                <div class="plot-description">
+                  Figure 30: Outdegree closeness histogram.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="column">
+              <div class="plot">
+                <img src="./img/outer_outcloseness_n_commits.svg">
+                <div class="plot-description">
+                  Figure 31: Number of commits with respect to outdegree closeness.
+                </div>
+              </div>
+            </div>
+            <div class="column">
+              <div class="plot">
+                <img src="./img/outer_outcloseness_log_n_commits_log.svg">
+                <div class="plot-description">
+                  Figure 32: Number of commits (log) with respect to outdegree closeness (log).
+                </div>
+              </div>
+            </div>
+          </div>
+        </blockquote>
       </div>
+    </div>
   </div>
 </body>
 

@@ -1,0 +1,33 @@
+ .text-center {
+      text-align: center;
+}
+
+.indent {
+    margin-left: 10px;
+}
+
+.plot {
+    text-align: center;
+    margin: 20px auto 0 auto;
+    width: 100%;
+    max-width: 500px;
+}
+
+.plot-large {
+    max-width: 700px;
+}
+
+.plot-description {
+    margin-top: 20px;
+    margin-bottom: 50px;
+    padding: 0 10px;
+    font-style: italic;
+}
+
+.chapter {
+    margin-top: 50px;
+}
+
+.paragraph {
+    text-align: justify;
+}
