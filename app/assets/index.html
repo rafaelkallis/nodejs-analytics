@@ -16,46 +16,40 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/katex.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/contrib/auto-render.min.js"></script>
   <script src="./js/app.js"></script>
-  <script>require('initialize');</script>
+  <script>
+    require('initialize');
+  </script>
 </head>
 
 <body>
   <div class="container" style="margin-top:50px;">
     <div class="row">
       <div class="column">
-        <div class="row">
-          <div class="column">
-            <h3>NodeJS Analytics</h3>
-            <p>by <a href="http://rafaelkallis.com" target="_blank">Rafael Kallis</a></p>
-            <p class="paragraph"><a href="https://nodejs.org/en/about/" target="_blank">Node.js</a> is a JavaScript runtime built on Chrome's
-              V8 JavaScript engine. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient.
-              The Node.js package ecosystem, npm, is the largest ecosystem of open source libraries in the world.</p>
-            <p class="paragraph">Below you can find a network analysis on the Node.js github repository. The analysis is focused exclusively on
-              github users which have contributed to the Node.js repository, or have interacted with a contributor. In the
-              first part of the analysis, we will focus only on relationships between contributors. On the second part, we
-              will focus on relationships between contributors and non contributors.</p>
-            <p class="paragraph">The analysis is based on data extracted by <a href="http://rafaelkallis.com" target="_blank">the author</a> from
-              the public
-              <a href="https://developer.github.com/v3/" target="_blank">GitHub API</a> using the <a href="https://github.com/rafaelkallis/uzh-github-spider"
-                target="_blank">homemade github crawler</a>. A CSV can be downloaded from <a href="./data/data.csv" target="_blank">here</a>.
-              All content is open source and may be used freely for any purpose.
-            </p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="column">
-            <div class="plot plot-large">
-              <img src="./img/contributor_digraph.svg" style="width: 100%;">
-              <div class="plot-description">
-                Figure 1: Node.js contributor graph. Isolated nodes ommited. Number of commits (log) determines the size of vertices.
-              </div>
-            </div>
+        <h3>NodeJS Analytics</h3>
+        <p>by <a href="http://rafaelkallis.com" target="_blank">Rafael Kallis</a></p>
+        <p class="paragraph"><a href="https://nodejs.org/en/about/" target="_blank">Node.js</a> is a JavaScript runtime built on Chrome's V8 JavaScript
+          engine. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient. The Node.js
+          package ecosystem, npm, is the largest ecosystem of open source libraries in the world.</p>
+        <p class="paragraph">Below you can find a network analysis on the Node.js github repository. The analysis is focused exclusively on github
+          users which have contributed to the Node.js repository, or have interacted with a contributor. In the first part
+          of the analysis, we will focus only on relationships between contributors. On the second part, we will focus on
+          relationships between contributors and non contributors.</p>
+        <p class="paragraph">The analysis is based on data extracted by <a href="http://rafaelkallis.com" target="_blank">the author</a> from
+          the public
+          <a href="https://developer.github.com/v3/" target="_blank">GitHub API</a> using the <a href="https://github.com/rafaelkallis/uzh-github-spider"
+            target="_blank">homemade github crawler</a>. A CSV can be downloaded from <a href="./data/data.csv" target="_blank">here</a>.
+          All content is open source and may be used freely for any purpose.
+        </p>
+        <div class="plot plot-large">
+          <img src="./img/contributor_digraph.svg" style="width: 100%;">
+          <div class="plot-description">
+            Figure 1: Node.js contributor graph. Isolated nodes ommited. Number of commits (log) determines the size of vertices.
           </div>
         </div>
         <h5>Table of contents</h5>
         <ol>
           <li>
-            <a href="#commits">Contributor commits</a>
+            <a href="#commits">Contributor Commits</a>
           </li>
           <li><a href="#contributor">Contributor Network</a>
             <ul>
@@ -74,6 +68,12 @@
               <li><a href="#outer-betweenness">Betweenness</a></li>
               <li><a href="#outer-indegree-closeness">Indegree Closeness</a></li>
               <li><a href="#outer-outdegree-closeness">Outdegree Closeness</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#communities">Contributor Communities</a>
+            <ul>
+              <li><a href="#comparison-table">Comparison</a></li>
             </ul>
           </li>
         </ol>
@@ -144,7 +144,7 @@
           </div>
         </blockquote>
         <h4 id="contributor" class="chapter">Contributor Network</h4>
-        <p>First some analysis has been conducted on users which have contributed to the project.</p>
+        <p class="paragraph">First some analysis has been conducted on users which have contributed to the project.</p>
         <p>Node.js contributor metrics:</p>
         <ul class="indent">
           <li>
@@ -171,7 +171,7 @@
         <blockquote>
           <div class="row">
             <div class="column">
-              <p>Indegree is defined as the number of contributors following a specific contributor. All values are normalised.</p>
+              <p class="paragraph">Indegree is defined as the number of contributors following a specific contributor. All values are normalised.</p>
               <ul>
                 <li>
                   Mean indegree: $5.758881 \times 10^{-3}$
@@ -253,7 +253,7 @@
         <blockquote>
           <div class="row">
             <div class="column">
-              <p>Outdegree is defined as the number of contributors a specific contributor follows. All values are normalised.</p>
+              <p class="paragraph">Outdegree is defined as the number of contributors a specific contributor follows. All values are normalised.</p>
               <ul>
                 <li>
                   Mean outdegree: $5.758881 \times 10^{-3}$
@@ -331,7 +331,7 @@
         <blockquote>
           <div class="row">
             <div class="column">
-              <p>Betweenness centrality quantifies the number of times a node acts as a bridge along the shortest path between
+              <p class="paragraph">Betweenness centrality quantifies the number of times a node acts as a bridge along the shortest path between
                 two other nodes. All values are normalised.
               </p>
               <ul>
@@ -413,7 +413,7 @@
         <blockquote>
           <div class="row">
             <div class="column">
-              <p>The indegree closeness centrality of a node is a measure of centrality in a network, calculated as the sum
+              <p class="paragraph">The indegree closeness centrality of a node is a measure of centrality in a network, calculated as the sum
                 of the length of the shortest paths between the node and all other nodes in the directed graph. Thus the
                 more central a node is, the closer it is to all other nodes.
               </p>
@@ -498,7 +498,7 @@
         <blockquote>
           <div class="row">
             <div class="column">
-              <p>The outdegree closeness centrality of a node is a measure of centrality in a network, calculated as the sum
+              <p class="paragraph">The outdegree closeness centrality of a node is a measure of centrality in a network, calculated as the sum
                 of the length of the shortest paths between the node and all other nodes in the directed graph. Thus the
                 more central a node is, the closer it is to all other nodes.
               </p>
@@ -576,7 +576,7 @@
           </div>
         </blockquote>
         <h4 id="outer-network">Outer network</h4>
-        <p>In this part we will analyse the relationship of Node.js contributors to non contributors.</p>
+        <p class="paragraph">In this part we will analyse the relationship of Node.js contributors to non contributors.</p>
         <div class="row">
           <div class="column">
             <p>Node.js outer network metrics:</p>
@@ -606,7 +606,7 @@
         <blockquote>
           <div class="row">
             <div class="column">
-              <p>
+              <p class="paragraph">
                 Indegree is defined as the number of any non contributor following a contributor. Values are not normalised.
               </p>
               <ul>
@@ -686,7 +686,7 @@
         <blockquote>
           <div class="row">
             <div class="column">
-              <p>
+              <p class="paragraph">
                 Outdegree is defined as the number of contributors following any non-contributor. Values are not normalised.
               </p>
               <ul>
@@ -766,7 +766,7 @@
         <blockquote>
           <div class="row">
             <div class="column">
-              <p>
+              <p class="paragraph">
                 Betweenness centrality quantifies the number of times a node acts as a bridge along the shortest path between two other nodes.
               </p>
               <ul>
@@ -846,7 +846,7 @@
         <blockquote>
           <div class="row">
             <div class="column">
-              <p>
+              <p class="paragraph">
                 The indegree closeness centrality of a node is a measure of centrality in a network, calculated as the sum of the length
                 of the shortest paths between the node and all other nodes in the directed graph. Thus the more central a
                 node is, the closer it is to all other nodes.
@@ -928,7 +928,7 @@
         <blockquote>
           <div class="row">
             <div class="column">
-              <p>
+              <p class="paragraph">
                 The outdegree closeness centrality of a node is a measure of centrality in a network, calculated as the sum of the length
                 of the shortest paths between the node and all other nodes in the directed graph. Thus the more central a
                 node is, the closer it is to all other nodes.
@@ -1006,6 +1006,68 @@
             </div>
           </div>
         </blockquote>
+        <h4 id="communities">Contributor Communities</h4>
+        <p class="paragraph">
+          Next, we run the network through a community detection algorithm in order to discover dense subgraphs. We have used the
+          <a href="http://arxiv.org/abs/physics/0512106" target="_blank">walktrap</a> algorithm for our community detection.
+          The algorithm has detected a total of 193 communities, of which 3 are significantly larger than the other. In our
+          comparison we are only going to focus on the larger communities.
+        </p>
+        <div class="plot plot-large">
+          <img src="./img/community_graph.svg" style="width: 100%;">
+          <div class="plot-description">
+            Figure 33: Node.js contributor community graph. We observe 3 major communities colored cyan, green and orange.
+          </div>
+        </div>
+        <table id="comparison-table">
+          <thead>
+            <tr>
+              <th>Community</th>
+              <th>Size</th>
+              <th>Mean Commits</th>
+              <th>Mean Indegree</th>
+              <th>Mean Outdegree</th>
+              <th>Mean Betweenness</th>
+              <th>Mean Indegree Closeness</th>
+              <th>Mean Outdegree Closeness</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Cyan</td>
+              <td>$ \small ^*269 $</td>
+              <td>$ \small 2.605948 \times 10 $</td>
+              <td>$ \small 1.020647 \times 10^{-2} $</td>
+              <td>$ \small ^*1.098836 \times 10^{-2} $</td>
+              <td>$ \small ^*1.992208 \times 10^{-3} $</td>
+              <td>$ \small 1.930608 \times 10^{-3} $</td>
+              <td>$ \small ^*2.697024 \times 10^{-3} $</td>
+            </tr>
+            <tr>
+              <td>Green</td>
+              <td>$ \small 207 $</td>
+              <td>$ \small ^*2.933333 \times 10$</td>
+              <td>$ \small ^*1.353564 \times 10^{-2} $</td>
+              <td>$ \small 1.09274 \times 10^{-2} $</td>
+              <td>$ \small 1.765154 \times 10^{-3} $</td>
+              <td>$ \small ^*1.995071 \times 10^{-3} $</td>
+              <td>$ \small 2.569517 \times 10^{-3} $</td>
+            </tr>
+            <tr>
+              <td>Orange</td>
+              <td>$ \small 90 $</td>
+              <td>$ \small 8.244444 $</td>
+              <td>$ \small 2.723005 \times 10^{-3} $</td>
+              <td>$ \small 7.125717 \times 10^{-3} $</td>
+              <td>$ \small 1.710008 \times 10^{-3} $</td>
+              <td>$ \small 1.978489 \times 10^{-3} $</td>
+              <td>$ \small 2.305728 \times 10^{-3} $</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="plot-description" style="text-align: center;">
+          Table 1: Comparison of the 3 major communities in the Node.js contributor network.
+        </div>
       </div>
     </div>
   </div>
